@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoraGraph</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/neo4j-driver@5.12.0/lib/browser/neo4j-web.min.js"></script>
+    <script src="addquestion.js" defer></script>
+</head>
+<body>
+    <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
+        <a href="./index.html" class="w3-bar-item w3-button material-button">Learn</a>
+        <a href="./AddQuestion.html"  class="w3-bar-item w3-button material-button">Add Questions</a>
+        <a href="./ManageQuestions.html" class="w3-bar-item w3-button material-button">Manage Questions</a>
+        <a href="./Settings.html" class="w3-bar-item w3-button material-button">Connection Settings</a>
+</div>        
+
+<div class="w3-main" style="margin-left:200px">
+    <div class="w3-teal">
+      <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+      <div class="w3-container">
+        <p class="w3-center">
+            <h1>MemoraGraph</h1>
+            <h2>Learn it all</h2>
+        </p>
+
+            <p class="w3-right">
+                <i class="fa-solid fa-circle-nodes"></i>
+                <i id="neo4j_indicator" class="material-icons">&#xe2c1;</i>
+            </p>
+        </div>
+    </div>
+
+    <div class="w3-card-4 "style="margin-top: 25px;">
+
+    <div class="w3-container w3-teal">
+        <h2>Add Question</h2>
+      </div>
+      
+      <form class="w3-container" onsubmit="addNewCard(event)">
+        <p>
+
+        <label class="w3-text-teal"><b>Question</b></label>
+        <textarea id="new-question" class="w3-input w3-border w3-light-grey" type="text" rows="5" required></textarea>
+        <p>
+
+        <label class="w3-text-teal"><b>Answer</b></label>
+        <textarea id="new-answer"  class="w3-input w3-border w3-light-grey" type="text" rows="5" required></textarea>
+        <p>
+
+        <button type="submit" class="w3-btn w3-blue-grey">Save</button>
+      </form>
+    </div>
+
+    
+    <div class="w3-card-4">
+        
+        <div class="new-question-form">
+            <h2>Add a New Question:</h2>
+            <form onsubmit="addNewCard(event)">
+                <input type="hidden" id="selected-category" name="selected-category">
+
+                <label for="category">Category:</label>
+                <!-- Add a container for displaying categories as circles -->
+                <div id="category-container" class="category-container"></div>
+                <div id="new-category-container">
+                    <label for="new-category">Or add a new category:</label>
+                    <input id="new-category" name="new-category" type="text">
+                </div>
+                <label for="new-question">Question:</label>
+                <textarea id="new-question" name="new-question" rows="5" required></textarea>
+                <label for="new-answer">Answer:</label>
+                <textarea id="new-answer" name="new-answer" rows="5" required></textarea>
+                <button class="material-button" type="submit">Add Card</button>
+            </form>
+        </div>
+        
+    </div>
+</body>
+</html>

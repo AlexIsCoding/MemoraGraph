@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://cdn.jsdelivr.net/npm/neo4j-driver@5.12.0/lib/browser/neo4j-web.min.js"></script>
-    <script src="script.js" defer></script>
-
-    <style>
-    </style>
+    <script src="settings.js" defer></script>
 </head>
 <body>
         
@@ -26,10 +23,7 @@
         <div class="w3-teal">
           <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
           <div class="w3-container">
-            <p class="w3-center">
-                <h1>MemoraGraph</h1>
-                <h2>Learn it all</h2>
-            </p>
+            <p class="w3-left"><h1>MemoraGraph - Learn it all</h1></p>
 
                 <p class="w3-right">
                     <i class="fa-solid fa-circle-nodes"></i>
@@ -37,32 +31,36 @@
                 </p>
             </div>
         </div>
-    <div class="w3-container">
-        <div class="w3-card-4 " style="margin-top: 25px;">
-            <header class="w3-container w3-light-grey">
-                <h3 id="question">John Doe</h3>
-              </header>
-
-            <button class="w3-button w3-block w3-dark-grey w3-padding-16" onclick="toggleAnswer()">SHOW ANSWER</button>
-            <div id="answerContainer" style="display: none;">
-            <div id="answer" class="w3-large w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
-            </div>
-            <div class="w3-row w3-xxlarge" ">
-                <div class="w3-half w3-green">
-                  <button class="w3-button w3-padding-32 w3-block w3-green">👍</button>
-
-                </div>
-                <div class="w3-half">
-              <button class="w3-button w3-padding-32 w3-block w3-red">👎</button>
-                  
-                </div>
-              </div>
-            </div>
-            <div class="w3-bar w3-border w3-round w3-large">
-                <a href="#" onclick="prevCard()" class="w3-button w3-half w3-padding-16">&#10094; Previous</a>
-                <a href="#" onclick="nextCard()" class="w3-half w3-button w3-right w3-padding-16">Next &#10095;</a>
-              </div>
-        </div>
+    <div class="container w3-container">
+            <h2>Input Form</h2>
     </div>
+    <form class="w3-container">
+        <label for="url" class="w3-text-teal">URL:</label>
+        <input class="w3-input w3-border w3-light-grey" required type="text" id="url" autocomplete="on">
+        <label for="username" class="w3-text-teal">Username:</label>
+        <input class="w3-input w3-border w3-light-grey" type="text" id="username" required autocomplete="on">
+        <label for="password" class="w3-text-teal">Password:</label>
+        <input class="w3-input w3-border w3-light-grey" type="password" id="password" required autocomplete="on">
+        <button class="w3-btn w3-blue-grey" onclick="setSessionStorage()">Connect</button>
+        <button class="w3-btn w3-blue-grey" onclick="clearSessionStorage()">Disconnect</button>
+        <div id="success" style="display: none;" class="w3-panel w3-pale-green w3-border">
+            <h3>Connected</h3>
+          </div>
+          <div id="error" style="display: none;" class="w3-panel w3-pale-red w3-border">
+            <h3>Could not connect!</h3>
+            <p>Check the credentials and try again!</p>
+          </div>
+      </form>
+      
+    </div>
+    <script>
+        function w3_open() {
+          document.getElementById("mySidebar").style.display = "block";
+        }
+        
+        function w3_close() {
+          document.getElementById("mySidebar").style.display = "none";
+        }
+        </script>
 </body>
 </html>

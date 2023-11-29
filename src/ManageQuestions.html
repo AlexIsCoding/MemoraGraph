@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoraGraph</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/neo4j-driver@5.12.0/lib/browser/neo4j-web.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h1>MemoraGraph - Learn it all</h1>
+        <nav class="navbar">
+            <button class="material-button" id="disconnect-db" onclick="showSettings()">Settings</button>            
+            <button class="material-button" id="page-mode" onclick="toggleMode()">Add Question</button>
+        </nav>
+    </header>
+<!--         
+        <nav class="sidebar">
+            <button class="close-button" onclick="toggleSidebar()">✕ Close</button>
+            <a href="settings.html">Settings</a>
+            <a href="add-question.html">Add Question</a>
+            <a href="categories.html">Categories</a>
+        </nav> -->
+    <div class="container">
+    <div class="session-storage-section" id="session-storage-section">
+            <div class="input-container">
+                <label for="url">URL:</label>
+                <input type="text" id="url" autocomplete="on">
+                <label for="username">Username:</label>
+                <input type="text" id="username" autocomplete="on">
+                <label for="password">Password:</label>
+                <input type="password" id="password" autocomplete="on">
+            </div>
+            <div class="button-container">
+                <button class="material-button" onclick="setSessionStorage()">Connect</button>
+                <button class="material-button" onclick="clearSessionStorage()">Disconnect</button>
+            </div>
+        </div>
+        
+        <div class="card" style="display: none;">
+            <div class="question"></div>
+            <div class="answer" style="display: none;"></div>
+            <div class="indicator">
+                <button class="material-button" onclick="toggleAnswer()">Show Answer</button>
+                <button class="material-button correct" onclick="markCorrect()" style="display: none;">I knew the answer</button>
+            </div>
+            <div class="navigation">
+                <button class="material-button" onclick="prevCard()">Previous</button>
+                <button class="material-button" onclick="nextCard()">Next</button>
+            </div>
+        </div>
+
+        <div class="new-question-form" style="display: none;">
+            <h2>Add a New Question:</h2>
+            <form onsubmit="addNewCard(event)">
+                <input type="hidden" id="selected-category" name="selected-category">
+
+                <label for="category">Category:</label>
+                <!-- Add a container for displaying categories as circles -->
+                <div id="category-container" class="category-container"></div>
+                <div id="new-category-container">
+                    <label for="new-category">Or add a new category:</label>
+                    <input id="new-category" name="new-category" type="text">
+                </div>
+                <label for="new-question">Question:</label>
+                <textarea id="new-question" name="new-question" rows="5" required></textarea>
+                <label for="new-answer">Answer:</label>
+                <textarea id="new-answer" name="new-answer" rows="5" required></textarea>
+                <button class="material-button" type="submit">Add Card</button>
+            </form>
+        </div>
+        
+    </div>
+</body>
+</html>
